@@ -25,9 +25,17 @@
 
 const FRESH_PRINCE_URL =
   "https://upload.wikimedia.org/wikipedia/en/3/33/Fresh_Prince_S1_DVD.jpg";
+const CURB_POSTER_URL =
+  "https://m.media-amazon.com/images/M/MV5BZDY1ZGM4OGItMWMyNS00MDAyLWE2Y2MtZTFhMTU0MGI5ZDFlXkEyXkFqcGdeQXVyMDc5ODIzMw@@._V1_FMjpg_UX1000_.jpg";
+const EAST_LOS_HIGH_POSTER_URL =
+  "https://static.wikia.nocookie.net/hulu/images/6/64/East_Los_High.jpg";
 
 // This is an array of strings (TV show titles)
-let titles = ["Fresh Prince of Bel Air"];
+let titles = [
+  "Fresh Prince of Bel Air",
+  "Curb Your Enthusiasm",
+  "East Los High",
+];
 // Your final submission should have much more data than this, and
 // you should use more than just an array of strings to store it all.
 
@@ -45,6 +53,10 @@ function showCards() {
     let imageURL = "";
     if (i == 0) {
       imageURL = FRESH_PRINCE_URL;
+    } else if (i == 1) {
+      imageURL = CURB_POSTER_URL;
+    } else if (i == 2) {
+      imageURL = EAST_LOS_HIGH_POSTER_URL;
     }
 
     const nextCard = templateCard.cloneNode(true); // Copy the template card
@@ -62,13 +74,6 @@ function editCardContent(card, newTitle, newImageURL) {
   const cardImage = card.querySelector("img");
   cardImage.src = newImageURL;
   cardImage.alt = newTitle + " Poster";
-
-  const link = document.createElement("a");
-  link.href = linkURL; // Set the URL to redirect to
-  link.target = "_blank"; // Open link in a new tab
-
-  // Append the image to the anchor element
-  link.appendChild(cardImage);
 
   // You can use console.log to help you debug!
   // View the output by right clicking on your website,
