@@ -99,29 +99,42 @@ function populateFighterCards(page = 1) {
 
 // Show fighter details in a popup
 function showFighterDetails(fighter) {
-  const popup = document.createElement("div");
-  popup.classList.add("card-popup");
-  popup.innerHTML = `
-    <h2>${fighter.FIGHTER}</h2>
-    <p><strong>Height:</strong> ${fighter.HEIGHT}</p>
-    <p><strong>Weight:</strong> ${fighter.WEIGHT}</p>
-    <p><strong>Reach:</strong> ${fighter.REACH}</p>
-    <p><strong>Stance:</strong> ${fighter.STANCE}</p>
-    <p><strong>DOB:</strong> ${fighter.DOB}</p>
-    <a href="${fighter.URL}" target="_blank">More Info</a>
-  `;
-  document.body.appendChild(popup);
-  popup.style.display = 'block';
-
+  // Create the overlay first to allow the user to click anywhere to close
   const overlay = document.createElement("div");
   overlay.classList.add("overlay");
   document.body.appendChild(overlay);
   overlay.style.display = 'block';
-
   overlay.onclick = () => {
     popup.remove();
     overlay.remove();
   };
+
+  // Create the pop-up container for fighter details
+  const popup = document.createElement("div");
+  popup.classList.add("card-popup");
+
+  // Ensure IMAGEURL is the correct key for your image URL in the data
+  const imageUrl = fighter.IMAGEURL || './images/no-profile-image.png';  // Fallback to a default image if URL is missing
+
+  // Set up the HTML structure, placing the image to the left of the details
+  popup.innerHTML = `
+    <div style="display: flex;">
+      <img src="${imageUrl}" alt="Image of ${fighter.FIGHTER}" style="width: 150px; height: auto; margin-right: 20px;">
+      <div>
+        <h2>${fighter.FIGHTER}</h2>
+        <p><strong>Height:</strong> ${fighter.HEIGHT}</p>
+        <p><strong>Weight:</strong> ${fighter.WEIGHT}</p>
+        <p><strong>Reach:</strong> ${fighter.REACH}</p>
+        <p><strong>Stance:</strong> ${fighter.STANCE}</p>
+        <p><strong>DOB:</strong> ${fighter.DOB}</p>
+        <a href="${fighter.URL}" target="_blank">More Info</a>
+      </div>
+    </div>
+  `;
+
+  // Append and display the pop-up
+  document.body.appendChild(popup);
+  popup.style.display = 'block';
 }
 
 // Handle search functionality
