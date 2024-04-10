@@ -9,7 +9,7 @@ body {
 /* Grid container setup for fighter names */
 .card-container {
   display: grid;
-  grid-template-columns: repeat(3, 1fr); /* 3 boxes in a row for larger screens */
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)); /* Adjust column width here */
   gap: 20px; /* Space between boxes */
 }
 
@@ -19,6 +19,7 @@ body {
   cursor: pointer;
   transition: background-color 0.3s ease;
   padding: 10px;
+  margin: 0 auto; /* Center the boxes in their grid cells */
   background-color: #fff;
   border: 1px solid #ccc;
   border-radius: 5px;
@@ -85,10 +86,9 @@ body {
   line-height: 1.5;
 }
 
-/* Adjustments for smaller screens */
 @media (max-width: 768px) {
   .card-container {
-    grid-template-columns: repeat(2, 1fr); /* 2 boxes in a row for smaller screens */
+    grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)); /* Adjust for smaller screens */
   }
 }
 
