@@ -1,43 +1,13 @@
 <!DOCTYPE html>
-<html>
-<head>
-  <title>LA TV Shows | Home</title>
-  <meta name="description" content="A Catalog of Shows Set in Los Angeles" />
-  <link rel="stylesheet" href="style.css" />
-  <!-- Include scripts for data and functionality -->
-  <script type="module" src="scripts.js"></script>
-  <script type="module" src="data.js"></script>
-</head>
-
-<body>
-  <header class="main-header">
-    <h1 class="title">LA TV Shows</h1>
-  </header>
-
-  <!-- Container for fighter cards -->
-  <div id="card-container">
-    <!-- Individual fighter cards will be dynamically added here -->
-  </div>
-
-  <!-- Card template (hidden by default) -->
-  <div class="card" style="display: none">
-    <div class="card-content">
-      <h2 class="fighter-name">TV Show Title</h2>
-      <img class="fighter-image" src="" alt="Fighter Image" />
-      <ul>
-        <li><strong>Height:</strong> <span class="fighter-height"></span></li>
-        <li><strong>Weight:</strong> <span class="fighter-weight"></span></li>
-        <li><strong>Reach:</strong> <span class="fighter-reach"></span></li>
-        <li><strong>Stance:</strong> <span class="fighter-stance"></span></li>
-        <li><strong>DOB:</strong> <span class="fighter-dob"></span></li>
-        <li><a class="fighter-url" href="#" target="_blank">More Info</a></li>
-      </ul>
-    </div>
-  </div>
-
-  <div class="footer">
-    <button onclick="quoteAlert();">Get A Quote!</button>
-    <button onclick="removeLastCard();">Remove A Card!</button>
-  </div>
-</body>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>UFC Fighter Cards</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <div id="card-container"></div>
+    <script type="module" src="scripts.js"></script>
+  </body>
 </html>

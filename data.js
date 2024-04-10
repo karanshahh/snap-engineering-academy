@@ -1,4 +1,4 @@
-export const ufcData = [
+export const ufcFighterData = [
   {
     "FIGHTER": "Tom Aaron",
     "HEIGHT": "--",
