@@ -113,8 +113,7 @@ function showFighterDetails(fighter) {
   const popup = document.createElement("div");
   popup.classList.add("card-popup");
 
-  // Ensure IMAGEURL is the correct key for your image URL in the data
-  const imageUrl = fighter.IMAGEURL || './images/no-profile-image.png';  // Fallback to a default image if URL is missing
+  const imageUrl = fighter.IMAGEURL || './images/no-profile-image.png'; 
 
   // Set up the HTML structure, placing the image to the left of the details
   popup.innerHTML = `

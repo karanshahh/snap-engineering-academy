@@ -19,8 +19,8 @@ def write_js(data, output_file):
 
 
 def main():
-    csv_file = "ufc_fighter_with_images_new.csv"  # Update with your CSV file path
-    js_file = "data.js"  # Name of the JavaScript file to generate
+    csv_file = "ufc_fighter_with_images_new.csv" 
+    js_file = "data.js"
 
     data = read_csv(csv_file)
     write_js(data, js_file)
