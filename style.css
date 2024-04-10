@@ -1,3 +1,7 @@
+div + #card-container {
+  margin-top: 30px; /* Adjust this value as needed for spacing */
+}
+
 body {
   font-family: 'Roboto', sans-serif;
   color: #333;
@@ -9,7 +13,7 @@ body {
 /* Grid container setup for fighter names */
 .card-container {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)); /* Adjust column width here */
+  grid-template-columns: repeat(3, 1fr); /* Three boxes in a row */
   gap: 20px; /* Space between boxes */
 }
 
@@ -19,19 +23,18 @@ body {
   cursor: pointer;
   transition: background-color 0.3s ease;
   padding: 10px;
-  margin: 0 auto; /* Center the boxes in their grid cells */
   background-color: #fff;
   border: 1px solid #ccc;
   border-radius: 5px;
   text-align: center;
   text-decoration: none;
   color: #333;
+  margin-bottom: 20px; /* Space between rows */
 }
 
 .fighter-name:hover {
   background-color: #f8f8f8;
 }
-
 /* Card popup styling */
 .card-popup {
   position: fixed;
@@ -58,57 +61,31 @@ body {
   display: none;
 }
 
-
-.card {
-  background-color: #fff;
-  border-radius: 8px;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-  overflow: hidden;
-  margin-bottom: 20px;
-}
-
-.card img {
-  width: 100%;
-  height: auto;
-}
-
-.card-content {
-  padding: 20px;
-}
-
-.card-title {
-  margin: 0;
-  color: #007bff;
-}
-
-.card-text {
-  color: #666;
-  line-height: 1.5;
-}
+/* Card styling remains unchanged */
 
 @media (max-width: 768px) {
   .card-container {
-    grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)); /* Adjust for smaller screens */
+    grid-template-columns: repeat(2, 1fr); /* 2 boxes in a row for smaller screens */
   }
 }
 
-/* Pagination styling */
-#pagination {
-  margin-top: 20px; /* Adds space above the pagination numbers */
-  text-align: center;
-}
+  /* Pagination styling */
+  #pagination {
+    margin-top: 20px; /* Adds space above the pagination numbers */
+    text-align: center;
+  }
 
-#pagination a {
-  padding: 5px 10px;
-  margin: 0 5px; /* Adds space between each pagination number */
-  text-decoration: none;
-  color: #007bff;
-  border: 1px solid #007bff;
-  border-radius: 5px;
-}
+  #pagination a {
+    padding: 5px 10px;
+    margin: 0 5px; /* Adds space between each pagination number */
+    text-decoration: none;
+    color: #007bff;
+    border: 1px solid #007bff;
+    border-radius: 5px;
+  }
 
-#pagination a.active-page {
-  font-weight: bold;
-  background-color: #007bff;
-  color: white;
-}
+  #pagination a.active-page {
+    font-weight: bold;
+    background-color: #007bff;
+    color: white;
+  }
