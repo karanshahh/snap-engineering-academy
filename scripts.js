@@ -147,4 +147,23 @@ function handleSearch() {
 
 document.getElementById('search-button').addEventListener('click', handleSearch);
 
+function filterByDate() {
+  const selectedDate = document.getElementById('dob-filter').value;
+  if (!selectedDate) {
+      alert("Please select a valid date.");
+      return;
+  }
+
+  filteredData = ufcFighterData.filter(fighter => {
+      // Convert DOB to date and compare
+      const dob = new Date(fighter.DOB);
+      return dob > new Date(selectedDate);
+  });
+
+  populateFighterCards(1); // Repopulate cards with the filtered data
+}
+
+// Event listener for the DOB filter button
+document.getElementById('dob-filter-button').addEventListener('click', filterByDate);
+
 populateFighterCards(1);
