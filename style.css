@@ -6,24 +6,29 @@ body {
   padding: 20px;
 }
 
+/* Grid container setup for fighter names */
+.card-container {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr); /* 3 boxes in a row for larger screens */
+  gap: 20px; /* Space between boxes */
+}
+
 /* Styling for fighter names in boxes */
 .fighter-name {
   font-size: 16px;
   cursor: pointer;
   transition: background-color 0.3s ease;
   padding: 10px;
-  margin-bottom: 5px; /* Space between boxes */
-  background-color: #fff; /* White background for the name box */
-  border: 1px solid #ccc; /* Border for the box */
-  border-radius: 5px; /* Rounded corners for the box */
-  display: block; /* Make each name a block to occupy full width */
-  text-align: center; /* Center-align the text */
-  text-decoration: none; /* Remove underline from links if any */
-  color: #333; /* Text color */
+  background-color: #fff;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  text-align: center;
+  text-decoration: none;
+  color: #333;
 }
 
 .fighter-name:hover {
-  background-color: #f8f8f8; /* Change background on hover */
+  background-color: #f8f8f8;
 }
 
 /* Card popup styling */
@@ -52,12 +57,6 @@ body {
   display: none;
 }
 
-/* Responsive card container */
-.card-container {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
-  gap: 20px;
-}
 
 .card {
   background-color: #fff;
@@ -86,16 +85,22 @@ body {
   line-height: 1.5;
 }
 
+/* Adjustments for smaller screens */
 @media (max-width: 768px) {
   .card-container {
-    grid-template-columns: 1fr;
+    grid-template-columns: repeat(2, 1fr); /* 2 boxes in a row for smaller screens */
   }
 }
 
 /* Pagination styling */
+#pagination {
+  margin-top: 20px; /* Adds space above the pagination numbers */
+  text-align: center;
+}
+
 #pagination a {
   padding: 5px 10px;
-  margin: 0 5px;
+  margin: 0 5px; /* Adds space between each pagination number */
   text-decoration: none;
   color: #007bff;
   border: 1px solid #007bff;
