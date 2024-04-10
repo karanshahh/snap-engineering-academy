@@ -147,23 +147,38 @@ function handleSearch() {
 
 document.getElementById('search-button').addEventListener('click', handleSearch);
 
-function filterByDate() {
-  const selectedDate = document.getElementById('dob-filter').value;
+function filterByDateAfter() {
+  const selectedDate = document.getElementById('dob-filter-after').value;
   if (!selectedDate) {
       alert("Please select a valid date.");
       return;
   }
 
   filteredData = ufcFighterData.filter(fighter => {
-      // Convert DOB to date and compare
       const dob = new Date(fighter.DOB);
       return dob > new Date(selectedDate);
   });
 
-  populateFighterCards(1); // Repopulate cards with the filtered data
+  populateFighterCards(1);
 }
 
-// Event listener for the DOB filter button
-document.getElementById('dob-filter-button').addEventListener('click', filterByDate);
+document.getElementById('dob-filter-button').addEventListener('click', filterByDateAfter);
+
+function filterByDateBefore() {
+  const selectedDate = document.getElementById('dob-filter-before').value;
+  if (!selectedDate) {
+      alert("Please select a valid date.");
+      return;
+  }
+
+  filteredData = ufcFighterData.filter(fighter => {
+      const dob = new Date(fighter.DOB);
+      return dob < new Date(selectedDate);
+  });
+
+  populateFighterCards(1);
+}
+
+document.getElementById('dob-filter-before-button').addEventListener('click', filterByDateBefore);
 
 populateFighterCards(1);
