@@ -30,6 +30,12 @@ document.getElementById('sort-button').addEventListener('click', () => {
   sortData(sortCriteria);
 });
 
+function extractAndParseWeightNumber(weightString) {
+  if (typeof weightString === 'string' && weightString.length >= 3) {
+      return parseInt(weightString.substr(0, 3));
+  }
+  return null;
+}
 
 function updatePagination(totalItems, currentPage) {
     const pageCount = Math.ceil(totalItems / fightersPerPage);
