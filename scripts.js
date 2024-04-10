@@ -1,91 +1,68 @@
-// Function to fetch CSV data from a URL
-const fetchCSV = async (url) => {
-  try {
-    const response = await fetch(url);
-    if (!response.ok) {
-      throw new Error('Network response was not ok');
-    }
-    const csvData = await response.text();
-    return csvData;
-  } catch (error) {
-    console.error('Error fetching CSV data:', error);
-    return null;
-  }
-};
+/**
+ * Data Catalog Project Starter Code - SEA Stage 2
+ *
+ * This file is where you should be doing most of your work. You should
+ * also make changes to the HTML and CSS files, but we want you to prioritize
+ * demonstrating your understanding of data structures, and you'll do that
+ * with the JavaScript code you write in this file.
+ *
+ * The comments in this file are only to help you learn how the starter code
+ * works. The instructions for the project are in the README. That said, here
+ * are the three things you should do first to learn about the starter code:
+ * - 1 - Change something small in index.html or style.css, then reload your
+ *    browser and make sure you can see that change.
+ * - 2 - On your browser, right click anywhere on the page and select
+ *    "Inspect" to open the browser developer tools. Then, go to the "console"
+ *    tab in the new window that opened up. This console is where you will see
+ *    JavaScript errors and logs, which is extremely helpful for debugging.
+ *    (These instructions assume you're using Chrome, opening developer tools
+ *    may be different on other browsers. We suggest using Chrome.)
+ * - 3 - Add another string to the titles array a few lines down. Reload your
+ *    browser and observe what happens. You should see a fourth "card" appear
+ *    with the string you added to the array, but a broken image.
+ *
+ */
+import { titles } from "./data.js";
 
-// Function to parse CSV data and convert it into a JavaScript array
-const parseCSV = (csv) => {
-  const lines = csv.split('\n');
-  const headers = lines[0].split(',');
-  const data = [];
+// This function adds cards the page to display the data in the array
+function showCards() {
+  const cardContainer = document.getElementById("card-container");
+  cardContainer.innerHTML = "";
+  const templateCard = document.querySelector(".card");
 
-  for (let i = 1; i < lines.length; i++) {
-    const fighter = {};
-    const values = lines[i].split(',');
-
-    for (let j = 0; j < headers.length; j++) {
-      fighter[headers[j]] = values[j];
-    }
-
-    data.push(fighter);
-  }
-
-  return data;
-};
-
-// Function to display the parsed data (for testing purposes)
-const displayData = (data) => {
-  console.log(data); // You can replace this with your own logic to use the data
-  showFighters(data); // Call showFighters with the parsed data
-};
-
-// Function to display fighters from the parsed data
-function showFighters(data) {
-  const fighterContainer = document.getElementById("fighter-container");
-  fighterContainer.innerHTML = "";
-
-  for (let i = 0; i < data.length; i++) {
-    const fighter = data[i];
-    const fighterCard = createFighterCard(fighter);
-    fighterContainer.appendChild(fighterCard);
+  for (let i = 0; i < titles.length; i++) {
+    let title = titles[i][0];
+    let imageURL = titles[i][1];
+    const nextCard = templateCard.cloneNode(true); // Copy the template card
+    editCardContent(nextCard, title, imageURL); // Edit title and image
+    cardContainer.appendChild(nextCard); // Add new card to the container
   }
 }
 
-function createFighterCard(fighter) {
-  const card = document.createElement("div");
-  card.classList.add("fighter-card");
-
-  const fighterName = document.createElement("h2");
-  fighterName.textContent = fighter.FIGHTER;
-
-  const fighterDetails = document.createElement("div");
-  fighterDetails.classList.add("fighter-details");
-  fighterDetails.innerHTML = `
-    <p>Height: ${fighter.HEIGHT}</p>
-    <p>Weight: ${fighter.WEIGHT}</p>
-    <p>Reach: ${fighter.REACH}</p>
-    <p>Stance: ${fighter.STANCE}</p>
-    <p>DOB: ${fighter.DOB}</p>
-    <p>URL: <a href="${fighter.URL}" target="_blank">${fighter.URL}</a></p>
-  `;
-
-  card.appendChild(fighterName);
-  card.appendChild(fighterDetails);
-
-  return card;
+function editCardContent(card, newTitle, newImageURL) {
+  card.style.display = "block";
+  const cardHeader = card.querySelector("h2");
+  cardHeader.textContent = newTitle;
+  const cardImage = card.querySelector("img");
+  cardImage.src = newImageURL;
+  cardImage.alt = newTitle + " Poster";
+  // You can use console.log to help you debug!
+  // View the output by right clicking on your website,
+  // select "Inspect", then click on the "Console" tab
+  console.log("new card:", newTitle, "- html: ", card);
 }
 
-// Fetch the CSV data and process it
-const processCSV = async (csvUrl) => {
-  const csvData = await fetchCSV(csvUrl);
-  if (csvData) {
-    const parsedData = parseCSV(csvData);
-    displayData(parsedData);
-  } else {
-    console.error('Failed to fetch CSV data');
-  }
-};
+// This calls the addCards() function when the page is first loaded
+document.addEventListener("DOMContentLoaded", showCards);
 
-// Replace 'path/to/your/csv/file.csv' with the actual URL of your CSV file
-const csvUrl = './ufc_fighter_tott.csv';
-processCSV(csvUrl);
+function quoteAlert() {
+  console.log("Button Clicked!");
+  alert(
+    "I guess I can kiss heaven goodbye, because it got to be a sin to look this good!"
+  );
+}
+
+function removeLastCard() {
+  titles.pop(); // Remove last item in titles array
+  showCards(); // Call showCards again to refresh
+}
