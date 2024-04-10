@@ -2,11 +2,12 @@ import { ufcFighterData } from './data.js';
 
 let currentPage = 1;
 const fightersPerPage = 50;
-let filteredData = ufcFighterData;
+let filteredData = [];
 
+// Function to populate fighter cards
 function populateFighterCards(page = 1) {
   const cardContainer = document.getElementById("card-container");
-  cardContainer.innerHTML = ''; // Clear existing cards before repopulating
+  cardContainer.innerHTML = '';  // Clear existing cards before repopulating
 
   const startIndex = (page - 1) * fightersPerPage;
   const endIndex = startIndex + fightersPerPage;
@@ -30,6 +31,7 @@ function populateFighterCards(page = 1) {
   updatePagination(filteredData.length, page);
 }
 
+// Function to update pagination
 function updatePagination(totalItems, currentPage) {
   const pageCount = Math.ceil(totalItems / fightersPerPage);
   const paginationContainer = document.getElementById('pagination');
@@ -51,14 +53,18 @@ function updatePagination(totalItems, currentPage) {
   }
 }
 
-function searchFighters() {
+// Function to handle the search
+function handleSearch() {
   const searchInput = document.getElementById('search-box').value.toLowerCase();
   filteredData = ufcFighterData.filter(fighter => 
     fighter.FIGHTER.toLowerCase().includes(searchInput)
   );
-  populateFighterCards();
+  populateFighterCards(1);
 }
 
-document.getElementById('search-box').addEventListener('input', searchFighters);
+// Event listener for the search button
+document.getElementById('search-button').addEventListener('click', handleSearch);
 
-populateFighterCards();
+// Initialize with all data
+filteredData = ufcFighterData.slice(); // Copy all data to filteredData
+populateFighterCards(1); // Populate cards with the first page of data
