@@ -11,7 +11,7 @@ base_url = "https://www.ufc.com/athlete/"
 for index, row in df.iterrows():
     fighter_name = (
         row["FIGHTER"].lower().replace(" ", "-")
-    )  # Adjust this line to match the URL format
+    )
     print(fighter_name)
     url = f"{base_url}{fighter_name}"
     response = requests.get(url)
